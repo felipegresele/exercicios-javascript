@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //vamos supor que quero organizar os dados de uma pessoa
+
+        //1 forma - objeto literal
+
+        const pessoa = {
+            nome: "Felipe",
+            idade: 20,
+            andar: () => console.log("está andando")
+        }
+
+        console.log(pessoa)
+        document.write(pessoa)
+
+        //criando funcao passando por props
+        function Pessoa(nome, idade) {
+            return {
+                nome,
+                idade,
+                andar: () => document.write("<br>" + nome + " pessoa andando <br>")
+            }
+        }
+
+        const pessoa2 = Pessoa("felipe", 21)
+        pessoa2.andar()
+
+        //funcao construtora
+        function Animal(nome, classe) {
+            //pega o nome da variavel q to criando this.cachorro pega ela e passa para o = nome que é o nome original daquela variavel
+            //faz um clone de animal para cada animal q instaciar essa função
+            this.nome = nome,
+            this.classe = classe
+            this.andar = () => document.write(nome + " está andando <br>")
+        }
+
+        //por causa do new ele pega a funcao animal e clona ela e cria com os dados da variavel q to criando agora
+        const cachorro = new Animal("Mel", "cachorro")
+        cachorro.andar()
+
+        //o contexto do gatinho é apenas dele e o do cachorro é apenas dele
+        const gatinho = new Animal("Gato Preto", "gato")
+        gatinho.andar()
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let numero = prompt("Digite um numero")
+
+        let indice = 0
+         document.write("<br> LOOP COM WHILE")
+        while(indice <= 10) {
+            indice++
+            if (indice === 5) {
+                continue; //vai continuar e ignorar o 5
+            }
+            document.write(`${numero} x ${indice} = ${(numero * indice)}<br>`)
+        }
+        document.write("saiu do loop")
+
+        document.write("LOOP COM FOR")
+        for(i = 0; i <= 15; i++) {
+            if (i === 5) {
+                break; //quando o index for 5 ele vai parar de rodar a funcao de loop
+            }
+            document.write(`<br>${numero} x ${i} = ${(numero * i)} <br>`)
+        }
+    </script>
+</body>
+</html>

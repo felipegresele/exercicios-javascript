@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="projeto-final.css">
+    <title>OrgCash</title>
+</head>
+
+<body>
+    <div style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+        <h1>Controle de gastos pessoais</h1>
+        <div style="display: flex; justify-content: center; align-items: center;">
+            <h1>Cadastrar novo gasto</h1>
+            <button onclick="adicionarUsuario()"
+                style="margin-left: 10px; width: 30px; height: 20px; background-color: green; color: white;">+</button>
+        </div>
+        <div class="lista-container">
+            <h1>Lista de gastos</h1>
+
+            <table class="tabela-gastos">
+                <thead>
+                    <tr>
+                        <th>Descrição: </th>
+                        <th>Valor: </th>
+                    </tr>
+                </thead>
+                <tbody id="tabela">
+                </tbody>
+            </table>
+        </div>
+        <h1>Total gasto = </h1>
+    </div>
+
+
+    <script>
+        const gastos = []
+
+        console.log(gastos)
+
+        function adicionarUsuario() {
+            const gastoDescricao = window.prompt("Descrição:")
+            const gastoValor = window.prompt("Valor:")
+
+            if (gastoValor === "" || isNaN(gastoValor)) {
+                alert("Erro: este campo só aceita números")
+                return
+            }
+
+            const valorNumerico = Number(gastoValor)
+
+            gastos.push({
+                descricao: gastoDescricao,
+                valor: valorNumerico
+            })
+
+            const tabela = document.getElementById("tabela")
+
+            const tr = document.createElement("tr")
+
+            const tdDescricao = document.createElement("td")
+            tdDescricao.textContent = gastoDescricao
+
+            const tdValor = document.createElement("td")
+            tdValor.textContent = `R$ ${valorNumerico.toFixed(2)}`
+
+            tr.appendChild(tdDescricao)
+            tr.appendChild(tdValor)
+
+            tabela.appendChild(tr)
+
+            console.log("Gastos adicionados:", gastos)
+        }
+
+        function somarGastos() {
+            
+        }
+
+    </script>
+</body>
+
+</html>
