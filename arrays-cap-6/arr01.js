@@ -27,6 +27,12 @@ arr.forEach((el, i) => {
     console.log(el * i)
 })
 
+const arr2 = [1,2,3]
+
+arr2.forEach((el, i) => {
+    console.log(el * i)
+})
+
 console.log(filtro)
 
 // console.log(soNumeros)

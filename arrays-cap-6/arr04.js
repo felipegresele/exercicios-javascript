@@ -26,12 +26,13 @@ console.log(teste2)
 console.log(arr)
 
 //mostra a partir do indice 2 (q eu passei) e corta no 4 (ultimo indice) criando um array novo recortado
-let arr2 = arr.slice(2,3)
+let arr2 = arr.slice(2,4)
 console.log(arr2)
-console.log(arr)
 
 //o primeiro parametro é o numero q quero começar a cortar o array apartir dele
 //quantos numeros quero cortar a partir do primeiro parametro
-let arr3 = arr.splice(2, 1, "splice")
+
+const arr4 = [1,2,3,4,5,6]
+
+let arr3 = arr4.splice(0, 2)
 console.log(arr3)
-console.log(arr)

@@ -23,3 +23,7 @@ console.log(arr.find((el) => {
 console.log(arr.findIndex((el) => {
     return el < 10
 }))
+
+console.log(arr.findIndex((el) => {
+    return el === 4
+}))
