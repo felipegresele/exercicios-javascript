@@ -1,0 +1,210 @@
+🔥 Nível 1 – Situações reais simples
+1) Carrinho de compras
+
+Você tem:
+
+const carrinho = [
+  { id: 1, nome: "Notebook", preco: 3000 },
+  { id: 2, nome: "Mouse", preco: 150 }
+];
+
+
+Faça uma função que:
+
+Receba um produto novo
+
+Verifique se já existe no carrinho (usando id)
+
+Se já existir → não adiciona
+
+Se não existir → adiciona usando spread (não pode mutar o array original)
+
+2) Remover item do carrinho
+
+Crie uma função que:
+
+Receba um id
+
+Retorne um novo array sem o item com aquele id
+
+Não pode usar splice
+
+Não pode mutar o array original
+
+3) Lista de usuários ativos
+const usuarios = [
+  { id: 1, nome: "Felipe", ativo: true },
+  { id: 2, nome: "Ana", ativo: false },
+  { id: 3, nome: "Carlos", ativo: true }
+];
+
+
+Retorne:
+
+Um array só com usuários ativos
+
+Um array só com os nomes dos usuários ativos
+
+🔥 Nível 2 – Pensamento mais profissional
+4) Controle de estoque
+
+Você tem:
+
+const estoque = [
+  { id: 1, produto: "Camiseta", quantidade: 10 },
+  { id: 2, produto: "Calça", quantidade: 0 },
+  { id: 3, produto: "Boné", quantidade: 5 }
+];
+
+
+Faça:
+
+Uma função que retorne apenas os produtos com quantidade maior que 0
+
+Uma função que verifique se existe algum produto esgotado
+
+Uma função que verifique se TODOS os produtos estão disponíveis
+
+5) Atualizar quantidade
+
+Crie uma função que:
+
+Receba id e novaQuantidade
+
+Atualize apenas o item correto
+
+Retorne novo array
+
+Não pode mutar o original
+
+🔥 Nível 3 – Situação de sistema real
+6) Sistema de permissões
+const usuario = {
+  nome: "Felipe",
+  permissoes: ["ADMIN", "USER"]
+};
+
+
+Faça:
+
+Uma função que verifique se ele tem permissão "ADMIN"
+
+Uma função que adicione uma nova permissão (sem duplicar)
+
+Uma função que remova uma permissão específica
+
+7) Relatório financeiro
+const transacoes = [
+  { tipo: "entrada", valor: 1000 },
+  { tipo: "saida", valor: 200 },
+  { tipo: "entrada", valor: 500 }
+];
+
+
+Faça:
+
+Calcular total de entradas
+
+Calcular total de saídas
+
+Calcular saldo final
+
+Retornar um objeto final assim:
+
+{
+  entradas: ?,
+  saidas: ?,
+  saldo: ?
+}
+
+🔥 Nível 4 – Pensamento de dev fullstack
+8) Evitar duplicação em lista de IDs
+
+Você recebe:
+
+const idsSelecionados = [1, 2, 3];
+
+
+Crie uma função que:
+
+Receba um id
+
+Se já existir → remove
+
+Se não existir → adiciona
+
+Retorne novo array
+
+(Esse é clássico de checkbox em React 👀)
+
+9) Agrupar por tipo
+const pedidos = [
+  { id: 1, tipo: "roupa", valor: 100 },
+  { id: 2, tipo: "eletronico", valor: 300 },
+  { id: 3, tipo: "roupa", valor: 200 }
+];
+
+
+Transforme isso em:
+
+{
+  roupa: [...],
+  eletronico: [...]
+}
+
+
+Sem usar biblioteca externa.
+
+10) Ordenação customizada
+
+Dado:
+
+const produtos = [
+  { nome: "Mouse", preco: 150 },
+  { nome: "Notebook", preco: 3000 },
+  { nome: "Teclado", preco: 250 }
+];
+
+
+Crie funções para:
+
+Ordenar por preço crescente
+
+Ordenar por preço decrescente
+
+Ordenar alfabeticamente pelo nome
+
+Sem mutar o array original.
+
+🚀 Desafio Final (nível entrevista)
+
+Você tem:
+
+const usuarios = [
+  { id: 1, nome: "Felipe", idade: 22, ativo: true },
+  { id: 2, nome: "Ana", idade: 17, ativo: false },
+  { id: 3, nome: "Carlos", idade: 30, ativo: true },
+  { id: 4, nome: "Marina", idade: 15, ativo: true }
+];
+
+
+Retorne:
+
+Apenas usuários ativos
+
+Apenas maiores de idade
+
+A média de idade dos usuários ativos
+
+Um array só com os nomes em caixa alta
+
+Um objeto final assim:
+
+{
+  totalUsuarios: ?,
+  totalAtivos: ?,
+  totalInativos: ?
+}
+
+
+Se você resolver tudo isso sozinho, você já tá MUITO acima de quem só faz exercício de curso.

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+        background: linear-gradient(135deg, #1e1e2f, #2c2c54);
+        color: #fff;
+        display: flex;
+        justify-content: center;
+        padding: 40px 20px;
+    }
+
+    body > div {
+        background-color: #2f2f4f;
+        width: 100%;
+        max-width: 800px;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    h1 {
+        margin-bottom: 20px;
+        font-size: 24px;
+        border-bottom: 2px solid #444;
+        padding-bottom: 10px;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: bold;
+    }
+
+    input {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 12px;
+        border-radius: 8px;
+        border: none;
+        outline: none;
+        font-size: 14px;
+    }
+
+    input:focus {
+        box-shadow: 0 0 0 2px #6c63ff;
+    }
+
+    button {
+        width: 100%;
+        padding: 12px;
+        border: none;
+        border-radius: 8px;
+        background-color: #6c63ff;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+        transition: 0.3s ease;
+    }
+
+    button:hover {
+        background-color: #574fd6;
+        transform: translateY(-2px);
+    }
+
+    #mensagem {
+        margin-top: 10px;
+        font-weight: bold;
+    }
+
+    #carrinho-content div,
+    #carrinho-novo-content div {
+        background-color: #3a3a63;
+        padding: 12px;
+        margin-bottom: 10px;
+        border-radius: 8px;
+        transition: 0.2s;
+    }
+
+    #carrinho-content div:hover,
+    #carrinho-novo-content div:hover {
+        background-color: #4b4b80;
+        transform: scale(1.02);
+    }
+
+    #carrinho-novo-content {
+        margin-top: 20px;
+    }
+</style>
+</head>
+<body>
+    <h1>Adicionar ao carrinho: </h1>
+    <div>
+        <div style="flex-direction: column;">
+            <label>Adicionar Produto</label>
+            <input type="text" placeholder="Digite o nome do produto" id="inputProduto" />
+            <input type="number" placeholder="Digite o preço do produto" id="inputPreco" />
+            <button id="btn" onclick="adicionarProdutoCarrinho()">Adicionar</button>
+            <p id="mensagem"></p>
+        </div>
+        <h1>Carrinho Atual:</h1>
+        <div id="carrinho-content">
+        </div>
+        <h1>
+            <div>
+                <h1>Carrinho Novo:</h1>
+                <div id="carrinho-novo-content"></div>
+            </div>
+        </h1>
+    </div>
+    <script>
+        const carrinho = [
+            {
+                id: 1,
+                produto: "notebook",
+                preco: 3000,
+            },
+            {
+                id: 2,
+                produto: "mouse",
+                preco: 200,
+            }
+        ]
+
+        const novoCarrinho = [...carrinho]
+
+        function listarProdutos() {
+            const divPrincipal = document.getElementById("carrinho-content")
+
+            divPrincipal.innerHTML = ""; //reinica o texto da div
+            carrinho.forEach((tarefa) => {
+                const div = document.createElement("div")
+                let produtoId = document.createElement("h1")
+                let produto = document.createElement("h1")
+                let valor = document.createElement("p")
+
+                produtoId = tarefa.id
+                produto = tarefa.produto
+                preco = tarefa.preco
+
+                div.innerHTML = `ID: ${produtoId} - Produto: ${produto}, valor: R$${preco}`
+                divPrincipal.appendChild(div)
+            })
+        }
+
+        listarProdutos()
+
+        function adicionarProdutoCarrinho() {
+            const inputProduto = document.getElementById("inputProduto")
+            const inputPreco = document.getElementById("inputPreco")
+            const mensagem = document.getElementById("mensagem")
+            const inputProdutoValue = inputProduto.value;
+            const precoProdutoValue = inputPreco.value;
+
+            if (typeof inputProdutoValue === "number") {
+                mensagem.style.color = "red";
+                mensagem.innerHTML = "Erro: Este campo não aceita números"
+            }
+            if (inputProdutoValue === "") {
+                mensagem.style.color = "red";
+                mensagem.innerHTML = "Erro: Insira o nome do produto"
+            }
+
+            const produtoExistente = carrinho.some((produto) => produto.produto === inputProdutoValue)
+
+            const produtoExistenteNovoCarrinho = novoCarrinho.some((produto) => produto.produto === inputProdutoValue)
+
+            if (produtoExistente) {
+                mensagem.style.color = "red";
+                mensagem.innerHTML = "Erro: Produto " + inputProdutoValue +" ja existente"
+                return;
+            }
+
+            if (produtoExistenteNovoCarrinho) {
+                mensagem.style.color = "red"
+                mensagem.innerHTML = "Erro: Produto " + inputProdutoValue +" ja existente"
+                return;
+            }
+
+            const novoId = Math.floor(Math.random() * 100)
+
+            novoCarrinho.push({
+                id: novoId,
+                produto: inputProdutoValue,
+                preco: precoProdutoValue
+            })
+
+            listarNovoCarrinho()
+        }
+
+        function listarNovoCarrinho() {
+            const divListaNovoCarrinho = document.getElementById("carrinho-novo-content")
+
+            divListaNovoCarrinho.innerHTML = "";
+            novoCarrinho.forEach((produto) => {
+                const div = document.createElement("div")
+                let produtoId = document.createElement("h1")
+                let produtoNome = document.createElement("h1")
+                let valor = document.createElement("p")
+
+                produtoId = produto.id,
+                produtoNome = produto.produto,
+                valor = produto.preco
+
+                div.innerHTML = `ID: ${produtoId} - Produto: ${produtoNome}, valor: R$${valor}`
+                divListaNovoCarrinho.appendChild(div)
+            })
+        }
+
+    </script>
+</body>
+
+</html>

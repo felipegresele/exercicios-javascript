@@ -27,3 +27,7 @@ console.log(arr.findIndex((el) => {
 console.log(arr.findIndex((el) => {
     return el === 4
 }))
+
+const arr2 = [1,2,3]
+
+console.log(arr2.includes(2))

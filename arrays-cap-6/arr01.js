@@ -10,6 +10,7 @@ let soNumeros = arr.every((el) => {
     return typeof el === "number"
 })
 
+//verifica se existe ja um elemento desse no array
 let apenasUmElementoForVerdadeiro = arr.some((el) => {
     console.log(el)
     return typeof el === "number" && el < 20

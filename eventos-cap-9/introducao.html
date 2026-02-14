@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Eventos</h1>
+    <button id="btn1">botao 1</button>
+    <button id="btn2">botao 2</button>
+    <button id="btn3">botao 3</button>
+
+    <script>
+        const btn1 = document.getElementById("btn1")
+        const btn2 = document.getElementById("btn2")
+        const btn3 = document.getElementById("btn3")
+    
+        //nao se pode adicionar 2 eventos a um mesmo atributo
+        // btn1.onclick = function() {
+        //     console.log("btn1 ciclado")
+        // }
+
+        // //o ultimo é oq fica
+        // btn1.onclick = function() {
+        //     console.log("btn1 ciclado2")
+        // }
+
+        function clicou() {
+            alert("voce clicou no btn1")
+        }
+
+        btn1.onclick = clicou;
+
+        //no DOM nivel 2 é possivel atribubir mais de 1 evento a 1 atributo
+        btn2.addEventListener("click", clicou)
+
+        //primeiro parametro é o nome q quero dar ao evento
+        //segundo parametro é a funcao do evento, oq ele vai fazer
+        btn2.addEventListener("click", function() {
+            console.log("clicou no btn2")
+        })
+
+        btn3.addEventListener("click", function() {
+            alert("vc ciclou no btn3")
+        })
+
+        btn3.addEventListener("click", function() {
+            console.log("funcao btn3")
+        })
+    </script>
+</body>
+</html>
