@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Lista de Itens:</h1>
+    <div>
+        <label>Digite o ID do item que deseja retirar da lista</label>
+        <input type="number" id="input" placeholder="Digite o ID aqui" />
+        <div id="lista-itens"></div>
+    </div>
+    <script>
+        const pessoas = [
+            {
+                id: 1,
+                nome: "felipe"
+            },
+            {
+                id: 2,
+                nome: "lorenzo"
+            },
+        ]
+
+        console.log(pessoas)
+
+
+        function tirarItemPorId(id) {
+            /*
+            //aqui no elemento to acessando o campo id do objeto entao ele vai verificar se existe algum elemento 
+            // que é um objeto com um campo chamado id e que contem o valor que to passando no 
+            // parametro da função dentro do array pessoas
+            */
+            const pessoasFiltrado = pessoas.filter((el) => el.id !== id )
+            if (pessoasFiltrado.length === 0) {
+                console.log("Não existe nenhuma pessoa com este ID: " + id)
+            }
+
+            return pessoasFiltrado
+        }
+        const resultado = tirarItemPorId(1)
+        console.log("Novo array: ", resultado)
+        console.log(pessoas)
+    </script>
+</body>
+
+</html>

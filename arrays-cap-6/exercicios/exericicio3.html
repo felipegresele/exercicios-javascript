@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <div>
+            <h1>Lista Original</h1>
+            <div id="lista-usuarios">
+                <p id="mensagem"></p>
+            </div>
+        </div>
+    </div>
+    <script>
+        const usuarios = [
+            { id: 1, nome: "Felipe", ativo: true },
+            { id: 2, nome: "Ana", ativo: false },
+            { id: 3, nome: "Carlos", ativo: true }
+        ];
+
+        function listaUsuariosOriginal() {
+            const divLista = document.getElementById("lista-usuarios");
+            const mensagem = document.getElementById("mensagem")
+            divLista.innerHTML = "";
+
+            if (usuarios.length === 0) {
+                mensagem.style.color = "red"
+                mensagem.innerHTML = "A lista está vazia"
+            }
+
+            usuarios.forEach((usuario) => {
+                const div = document.createElement("div")
+
+                div.innerHTML = `
+                    <h1>Id: ${usuario.id}</h1>
+                    <h3>Nome: ${usuario.nome}</h3>
+                    <h3>Ativo: ${usuario.ativo}</h3>
+                `
+
+                divLista.appendChild(div)
+            })
+        }
+
+        listaUsuariosOriginal()
+
+        function listarApenasUsuariosAtivos() {
+            const novoArray = usuarios.filter(el => el.ativo === true)
+            if (novoArray.length === 0) {
+                console.log("Todos os usuários estão ativos!")
+            }
+
+            return novoArray;
+        }
+
+        function listarNomesDosUsuariosAtivos() {
+            const novoArray = usuarios.filter((el) => {
+                return el.ativo === true
+            })
+
+            const arrayNomesUsuariosAtivos = novoArray.map((usuario) => {
+                return usuario.nome
+            })
+
+            return arrayNomesUsuariosAtivos;
+        }
+
+        const response1 = listarApenasUsuariosAtivos()
+        const response2 = listarNomesDosUsuariosAtivos()
+
+        console.log(response1)
+        console.log(response2)
+
+    </script>
+</body>
+
+</html>

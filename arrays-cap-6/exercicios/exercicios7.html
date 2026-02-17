@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+        const transacoes = [
+        { tipo: "entrada", valor: 1000 },
+        { tipo: "saida", valor: 200 },
+        { tipo: "entrada", valor: 500 }
+        ];
+
+        Faça:
+
+        Calcular total de entradas
+
+        Calcular total de saídas
+
+        Calcular saldo final
+
+        Retornar um objeto final assim:
+
+        {
+        entradas: ?,
+        saidas: ?,
+        saldo: ?
+        }
+        */
+
+        const transacoes = [
+        { tipo: "entrada", valor: 1000 },
+        { tipo: "saida", valor: 200 },
+        { tipo: "entrada", valor: 500 }
+        ];
+
+        function totalEntradas() {
+            const trasacoesTipoEntrada = transacoes.filter(transacao => transacao.tipo === "entrada")
+
+            const totalTrasacoesTipoEntrada = trasacoesTipoEntrada.length
+
+            if (trasacoesTipoEntrada.length === 0) {
+                return console.log("Nenhuma transação com tipo entrada")
+            }
+
+            const valorTotal = trasacoesTipoEntrada.map((item) => {
+                return item.valor
+            })
+
+            return totalTrasacoesTipoEntrada
+        }
+
+        console.log("Existem " + totalEntradas() + " transação(es) com o tipo 'entrada'")
+    </script>
+</body>
+</html>

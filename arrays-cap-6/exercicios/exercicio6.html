@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*
+        const usuario = {
+        nome: "Felipe",
+        permissoes: ["ADMIN", "USER"]
+        };
+
+        Faça:
+
+        Uma função que verifique se ele tem permissão "ADMIN"
+
+        Uma função que adicione uma nova permissão (sem duplicar)
+
+        Uma função que remova uma permissão específica
+        */
+
+        const usuario = {
+        nome: "Felipe",
+        permissoes: ["ADMIN", "USER"]
+        };
+
+        function verificaPermissaoADMIN(user) {
+            return user.permissoes.includes("ADMIN")
+        }
+
+        console.log(verificaPermissaoADMIN(usuario))
+
+        function adicionarNovaPermissaoUsuario(user, novaPermissao) {
+            return {
+                ...user,
+                permissoes: [...user.permissoes, novaPermissao],
+                novaPermissaoAdicionada: novaPermissao
+            }
+        }
+
+        function removerPermissaoEspecifica(user, nomePermissaoRemovida) {
+
+            const permissoesAtualizado = user.permissoes.filter(permissao => permissao !== nomePermissaoRemovida)
+            
+            if (permissoesAtualizado.length === 0) {
+                return console.log(`Nenhuma permissão ${novaPermissao} encontrada`)
+            }
+
+            return {
+                ...user,
+                permissoes: permissoesAtualizado,
+            }
+        }
+
+        console.log(adicionarNovaPermissaoUsuario(usuario, "OPERADOR"))
+
+        console.log(removerPermissaoEspecifica(usuario, "ADMIN"))
+
+    </script>
+</body>
+
+</html>

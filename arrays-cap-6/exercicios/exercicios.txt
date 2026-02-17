@@ -38,7 +38,6 @@ const usuarios = [
   { id: 3, nome: "Carlos", ativo: true }
 ];
 
-
 Retorne:
 
 Um array só com usuários ativos
@@ -55,7 +54,6 @@ const estoque = [
   { id: 2, produto: "Calça", quantidade: 0 },
   { id: 3, produto: "Boné", quantidade: 5 }
 ];
-
 
 Faça:
 
@@ -83,7 +81,6 @@ const usuario = {
   nome: "Felipe",
   permissoes: ["ADMIN", "USER"]
 };
-
 
 Faça:
 
