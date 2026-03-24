@@ -1,107 +1,146 @@
+
 const input = document.getElementById("item-input");
 const btn = document.getElementById("add-item");
-const lista = document.querySelector(".todo-list__container");
+const lista = document.getElementById("todo-list__container");
+const mensagem = document.getElementById("mensagem")
 
 const tarefas = [];
 
-salvarTarefasLocalStorage();
-listarTarefas()
-
 const form = document.getElementById("todo-add")
 
-form.addEventListener("submit", adicionarTarefa);
+listarTarefas()
 
+form.addEventListener("submit", function(event) {
+    event.preventDefault(); //nao deixa dar refresh ao dar submit no formulario
 
+    const inputValue = input.value;
 
-function adicionarTarefa(event) {
-    event.preventDefault(); // impede o reload do form
-
-    const inputValue = input.value.trim();
-    if (inputValue === "") return;
+    if (inputValue === "") {
+        mensagem.style.color = "white"
+        mensagem.style.padding = 2
+        mensagem.style.background = "gray"
+        mensagem.innerHTML = "Adicione o nome da tarefa"
+        return
+    }
 
     tarefas.push({
-        id: Math.floor(Math.random() * 100) + 1,
+        id: Math.floor(Math.random() * 100),
         nome: inputValue,
         concluida: false,
-});
-    input.value = "";
+    })
 
-    salvarTarefasLocalStorage();
-    listarTarefas();
     console.log(tarefas)
-}
+
+    input.value = "" //deixa o campo do input vazio
+
+
+    listarTarefas();
+
+})
 
 function listarTarefas() {
-    lista.innerHTML = ""; // limpa antes de renderizar
+    lista.innerHTML = "";
+    
+    tarefas.forEach((tarefa, index) => {
+        const div = document.createElement("div")
 
-    tarefas.forEach((tarefa) => {
-        const div = document.createElement("div");
+        div.style.display = "flex"
+        div.style.justifyContent = "space-between"
+        div.style.padding = "10px"
 
-        div.style.background = "gray";
-        div.style.color = "white";
-        div.style.padding = "2px";
-        div.style.marginTop = "5px";
-        div.style.marginBottom = "5px";
+        const tituloStyle = tarefa.concluida 
+            ? "text-decoration: line-through; opacity: 0.6;" 
+            : ""
 
-        const checkbox = document.createElement("input")
-        checkbox.type = "checkbox";
-        checkbox.checked = tarefa.concluida //quando estiver checked a tarefa vai ser concluida;
+        div.innerHTML = `
+        <div>
+            <input type="checkbox" 
+                ${tarefa.concluida ? "checked" : ""} 
+                onclick="alternarConcluida(${index})"
+            >
 
-        checkbox.addEventListener("change", () => {
-            tarefa.concluida = checkbox.checked;
-            salvarTarefasLocalStorage();
-            listarTarefas();
-        })
+            <span style="${tituloStyle}">
+                ${tarefa.nome}
+            </span>
+        </div>
 
-         const span = document.createElement("span");
-        span.textContent = tarefa.nome;
+        <div>
+            <button onclick="editarTarefa(${index})">
+                <i class="fas fa-edit"></i>
+            </button>
+            <button onclick="excluirTarefa(${index})">
+                <i class="fas fa-trash"></i>
+            </button>
+        </div>
+        `
 
-        if (tarefa.concluida) {
-            span.style.textDecoration = "line-through";
-            span.style.opacity = "0.6";
+        lista.appendChild(div)
+    })
+}
+
+function alternarConcluida(index) {
+    tarefas[index].concluida = !tarefas[index].concluida
+    listarTarefas()
+}
+
+function editarTarefa(id) {
+
+    lista.innerHTML = ""
+
+    tarefas.forEach((tarefa, index) => {
+        const div = document.createElement("div")
+        
+        div.style.display = "flex"
+        div.style.justifyContent = "space-between"
+        div.style.padding = 10
+
+        if (index === id) {
+
+            const inputNovoTitulo = document.createElement("input")
+            inputNovoTitulo.value = tarefa.nome;
+
+            inputNovoTitulo.style.height = 15
+            inputNovoTitulo.style.backgroundColor = "yellow"
+
+            const btnSalvar = document.createElement("button")
+            btnSalvar.innerHTML = "Salvar"
+
+            btnSalvar.onclick = function() {
+                tarefas[index].nome = inputNovoTitulo.value
+                listarTarefas()
+            }
+            
+            div.appendChild(inputNovoTitulo)
+            div.appendChild(btnSalvar)
         }
 
-        const btnEditar = document.createElement("button");
-        btnEditar.textContent = "Editar";
+         else {
 
-        btnEditar.addEventListener("click", () => {
-            const novoNome = prompt("Editar tarefa:", tarefa.nome);
-            if (novoNome && novoNome.trim() !== "") {
-                tarefa.nome = novoNome.trim();
-                salvarTarefasLocalStorage()
-                listarTarefas();
-            }
-        });
-
-        //excluir
-        const btnExcluir = document.createElement("button");
-        btnExcluir.textContent = "Excluir";
-
-        btnExcluir.addEventListener("click", () => {
-            const index = tarefas.findIndex(t => t.id === tarefa.id);
-            tarefas.splice(index, 1);
-            salvarTarefasLocalStorage();
-            listarTarefas();
-        });
-
-
-        div.appendChild(checkbox);
-        div.appendChild(span);
-        div.appendChild(btnEditar);
-        div.appendChild(btnExcluir);
+            div.innerHTML = `
+                <h3>Id: ${tarefa.id}</h3>
+                <h3>Titulo: ${tarefa.nome}</h3>
+                <div>
+                    <button onclick="editarTarefa(${index})">
+                        <i class="fas fa-edit"></i>
+                    </button>
+                    <button onclick="excluirTarefa(${index})">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </div>
+            `;
+        }
 
         lista.appendChild(div);
-    });
+    })
+
 }
 
-function salvarTarefasLocalStorage() {
-    localStorage.getItem("tarefas", JSON.stringify(tarefas));
-}
+function excluirTarefa(id) {
+    const confirmar  = confirm("Tem certeza que deseja excluir esta tarefa")
 
-function carregarTarefas() {
-    const dados = localStorage.getItem("tarefas")
-    if (!dados) return;
-
-    const tarefasSalvas = JSON.parse(dados);
-    tarefas.push(...tarefasSalvas)
+    if (confirmar) {
+        tarefas.splice(id,1) //tira o id e 1 elemento
+        listarTarefas()
+        console.log(tarefas)
+    }
 }

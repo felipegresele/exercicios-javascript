@@ -1,0 +1,46 @@
+// length
+// at()
+// charAt()
+// charCodeAt()
+// codePointAt()
+
+// concat()
+
+// includes()
+// indexOf()
+// lastIndexOf()
+// startsWith()
+// endsWith()
+// search()
+// match()
+// matchAll()
+
+// slice()
+// substring()
+// substr()
+
+// replace()
+// replaceAll()
+
+// split()
+
+// toUpperCase()
+// toLowerCase()
+// toLocaleUpperCase()
+// toLocaleLowerCase()
+
+// trim()
+// trimStart()
+// trimEnd()
+
+// padStart()
+// padEnd()
+
+// repeat()
+
+// normalize()
+
+// localeCompare()
+
+// valueOf()
+// toString()

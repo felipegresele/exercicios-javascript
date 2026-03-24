@@ -19,17 +19,20 @@
         <div class="todo-add-item__container">
             <h1 class="heading">todo List</h1>
             <form action="#" class="todo-add-item" id="todo-add">
-                <input class="inputItem" id="item-input" type="text" name="text" placeholder="New Item">
-                <button id="add-item" type="submit" onclick="adicionarTarefa(event)">Add</button>
+                <div>
+                    <input class="inputItem" id="item-input" type="text" name="text" placeholder="New Item">
+                <button id="add-item" type="submit">Add</button>
+                </div>
+                <p id="mensagem" style="font-size: large;"></p>
             </form>
         </div>
 
-        <div class="todo-list__container">
+        <div id="todo-list__container">
         </div>
 
     </div>
 
-   
+    
 
 
     <script src="js/todolist.js"></script>

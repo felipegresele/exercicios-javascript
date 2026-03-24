@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body>
+<body id="container">
     <h1>Eventos</h1>
     <button id="btn1">botao 1</button>
     <button id="btn2">botao 2</button>
@@ -47,6 +47,18 @@
 
         btn3.addEventListener("click", function() {
             console.log("funcao btn3")
+        })
+
+        //pegar todos os elementos button que esta dentro de #container
+        //gera uma NodeList 
+        const btns = document.querySelectorAll("#container button")
+        
+        console.log(btns)
+
+        btns.forEach( btn => {
+            btn.addEventListener("click", function(e) {
+                console.log(e.target) //o target é o elemento HTML que disparou o evento, ex <button> aonde esta sendo disparado esse evento
+            })
         })
     </script>
 </body>

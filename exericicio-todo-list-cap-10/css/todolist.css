@@ -56,7 +56,7 @@ ion-icon{
 
 .todo-add-item{
     display:flex;
-    flex-direction:row;
+    flex-direction:column;
     justify-content: center;
     align-content: center;
 

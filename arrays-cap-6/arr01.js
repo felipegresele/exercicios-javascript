@@ -11,7 +11,8 @@ let soNumeros = arr.every((el) => {
 })
 
 //verifica se existe ja um elemento desse no array
-let apenasUmElementoForVerdadeiro = arr.some((el) => {
+//retorna true ou false
+let algumElementoForVerdadeiro = arr.some((el) => {
     console.log(el)
     return typeof el === "number" && el < 20
 })
@@ -35,6 +36,7 @@ arr2.forEach((el, i) => {
 })
 
 console.log(filtro)
+console.log(algumElementoForVerdadeiro)
 
 // console.log(soNumeros)
 // console.log(apenasUmElementoForVerdadeiro)

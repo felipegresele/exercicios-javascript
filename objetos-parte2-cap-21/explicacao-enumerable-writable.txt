@@ -1,0 +1,90 @@
+1️⃣ writable
+
+Define se a propriedade pode ser alterada.
+
+Exemplo
+const obj = {};
+
+Object.defineProperty(obj, "nome", {
+  value: "Felipe",
+  writable: false
+});
+
+obj.nome = "João";
+
+console.log(obj.nome);
+
+Resultado
+
+Felipe
+
+Não mudou.
+
+Porque:
+
+writable: false
+
+significa:
+
+❌ não pode alterar o valor
+2️⃣ enumerable
+
+Define se a propriedade aparece quando você percorre o objeto.
+
+Exemplo:
+
+const obj = {};
+
+Object.defineProperty(obj, "nome", {
+  value: "Felipe",
+  enumerable: false
+});
+
+Agora:
+
+console.log(obj);
+
+Resultado
+
+{}
+
+Mas o valor existe:
+
+console.log(obj.nome);
+
+Resultado
+
+Felipe
+Veja o efeito no loop
+for (let chave in obj) {
+  console.log(chave);
+}
+
+Resultado
+
+(nada)
+
+Porque:
+
+enumerable: false
+
+significa:
+
+❌ não aparece em loops
+❌ não aparece em Object.keys()
+🔎 Comparação prática
+const obj = {};
+
+Object.defineProperty(obj, "nome", {
+  value: "Felipe",
+  writable: false,
+  enumerable: false
+});
+
+Agora:
+
+operação	resultado
+obj.nome	funciona
+alterar valor	❌ não
+Object.keys()	não aparece
+for in	não aparece
